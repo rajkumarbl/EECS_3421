@@ -1,0 +1,18 @@
+WITH table AS (
+select P.cid as cid, P.when as when, sum(B.weight * P.qnty) as weight
+from yrb_purchase P, yrb_book B
+where P.title = B.title and P.year = B.year
+group by P.cid, P.when
+order by p.cid) , 
+table2 AS(
+select P.cid as cid, P.when as when, sum(O.price * P.qnty) as price
+from yrb_purchase P, yrb_offer O
+where P.club = O.club and P.title = O.title and P.year = O.year
+group by P.cid, P.when)
+
+Select b.cid,  cast (t2.when as date) as day,  cast (t2.price as decimal(5,2)) + a.cost as cost
+from table2 t2, table t1, yrb_shipping a, yrb_customer b
+where b.cid = t2.cid and b.cid = t1.cid and t2.when = t1.when and a.weight = (select min(a1.weight)
+				                                          from yrb_shipping a1
+				                                          where a1.weight >= t1.weight)
+order by b.cid;

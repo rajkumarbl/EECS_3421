@@ -1,0 +1,3 @@
+Select count(cid) COUNT
+from  yrb_customer;
+

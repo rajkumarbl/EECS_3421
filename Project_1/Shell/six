@@ -1,0 +1,14 @@
+WITH table AS(
+Select A.cid as cid, A.name as name, C.cat as cat,SUM(D.price) as cost
+from yrb_customer A, yrb_purchase B, yrb_book C, yrb_offer D
+where  A.cid=B.cid and B.title = C.title and B.year = C.year and B.title = D.title and B.year = D.year and 
+B.club = D.club 
+group by A.cid, A.name, C.cat)
+
+Select t1.name, t1.cat, t1.cost
+from   table t1
+where  t1.cost>=all(Select t2.cost
+                    from table t2
+                    where t1.cid=t2.cid);
+
+

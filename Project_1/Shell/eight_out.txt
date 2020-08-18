@@ -1,0 +1,19 @@
+TITLE                     YEAR   PRICE  
+------------------------- ------ -------
+Transmorgifacation          2000  288.73
+Transmorgifacation          2000  285.73
+Transmorgifacation          2000  281.00
+Transmorgifacation          2000  278.73
+Transmorgifacation          2000  285.00
+Transmorgifacation          2000  282.73
+Transmorgifacation          2000  279.73
+Transmorgifacation          2000  280.73
+Transmorgifacation          2000  282.73
+Transmorgifacation          2000  282.00
+Avarice is Good             1994  218.95
+Avarice is Good             1994  215.95
+Avarice is Good             1994  214.95
+Avarice is Good             1994  215.95
+Avarice is Good             1994  214.95
+
+  15 record(s) selected.

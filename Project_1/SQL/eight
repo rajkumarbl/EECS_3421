@@ -1,0 +1,9 @@
+WITH tabl1 as(Select o2.club, max(o2.price)as PRICE
+from yrb_offer o2,  yrb_offer o1, yrb_book b
+where o1.club=o2.club and o1.title = b.title and o2.title = b.title and b.language = 'English'
+group by o2.club)
+
+Select o.title, o.year, o.price
+from yrb_offer o
+where o.price >(Select AVG(price)
+                 from tabl1) ;

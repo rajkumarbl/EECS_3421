@@ -1,0 +1,5 @@
+CLUB            COUNT      
+--------------- -----------
+Basic                    43
+
+  1 record(s) selected.

@@ -1,0 +1,3 @@
+Select Distinct(name) 
+from yrb_customer A, yrb_purchase B 
+where (club like '_A%') & (A.cid=B.cid);

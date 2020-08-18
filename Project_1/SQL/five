@@ -1,0 +1,5 @@
+select distinct  c.name
+from yrb_member m, yrb_customer c
+where not exists(select cid
+             from yrb_purchase p
+             where m.cid = p.cid and m.club = p.club) and m.cid=c.cid;

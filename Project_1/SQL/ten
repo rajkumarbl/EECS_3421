@@ -1,0 +1,15 @@
+WITH table2 AS (
+select P.cid as cid,P.club, P.when as when, sum(O.price * P.qnty) as price,sum(B.weight * P.qnty) as weight
+from yrb_purchase P, yrb_offer O,yrb_book B
+where P.club = O.club and P.title = O.title and P.year = O.year and P.title = B.title and P.year = B.year 
+group by P.cid, P.when, P.club
+order by P.cid)
+
+Select t1.cid,cast (t1.when as date) as day,(CASE WHEN t1.price >=50 THEN t1.price ELSE t1.price+a.cost END)as cost
+from   table2 t1,yrb_shipping a
+where  t1.price>=(Select Max(t2.price)
+                  from   table2 t2
+                  where  t1.cid=t2.cid )and a.weight = (select min(a1.weight)
+				                         from yrb_shipping a1
+				                          where a1.weight >= t1.weight);
+

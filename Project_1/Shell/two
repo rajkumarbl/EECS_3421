@@ -1,0 +1,3 @@
+select distinct  a.name, a1.name
+from yrb_purchase c, yrb_purchase c1, yrb_customer a, yrb_customer a1
+where c.title = c1.title and c.cid<>c1.cid and c1.cid>c.cid and c1.year = c.year and a.cid=c.cid and a1.cid = c1.cid;
